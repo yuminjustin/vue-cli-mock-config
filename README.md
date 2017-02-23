@@ -10,29 +10,29 @@ vue-cli会帮你安装express的服务器框架，有了它我们就能很快去
 ###实例（我采用外置方式）：<br/><br/>
 （build/dev-server.js）<br/>
  
-   var dataServer = require('./data_server')
-   dataServer(app)
+     var dataServer = require('./data_server')
+     dataServer(app)
    
 （build/data_server.js）<br/>  
 
-   module.exports = function (app) {
-     app.post('/test', function (req, res) {
-       res.send('{"status":"is work"}')
-     })
-  }
+     module.exports = function (app) {
+         app.post('/test', function (req, res) {
+              res.send('{"status":"is work"}')
+         })
+    }
   
- （调用代码）<br/>  
+ （调用代码，ajax同样适用）<br/>  
  
-  let req = new Request("/test", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body:"a=1&b=2" /*需要提交的数据 type String*/
-  })
+      let req = new Request("/test", {
+                method: 'POST',
+                headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body:"a=1&b=2" /*需要提交的数据 type String*/
+      })
 
-  fetch(req).then((response) => response.json()).then(
-    (data) => sfn(data)
-  ).catch(
-    (e) => errfn(e)
-  )
+      fetch(req).then((response) => response.json()).then(
+              (data) => sfn(data)
+      ).catch(
+              (e) => errfn(e)
+      )
